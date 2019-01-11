@@ -33,6 +33,8 @@
 
 # build
 build
+**/build
 
-# DS_Store
+# Other garbage
 **/.DS_Store
+**/*.vscode

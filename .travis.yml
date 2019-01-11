@@ -1,34 +1,7 @@
 language: cpp
 
-compiler:
-  - clang
-
-# add cmake
-addons:
-  apt:
-    packages:
-      - cmake
-
-before_install:
-  # Ubuntu Toolchain
-  - sudo add-apt-repository ppa:ubuntu-toolchain-r/ppa -y
-  - sudo apt-get update
-
-  # clang ppa
-  - sudo add-apt-repository -y ppa:h-rayflood/llvm
-  - sudo apt-get update -qq
-
-install:
-  # clang 3.4
-  - if [ "$CXX" == "clang++" ]; then sudo apt-get install --allow-unauthenticated -qq clang-3.4; fi
-  - if [ "$CXX" == "clang++" ]; then export CXX="clang++-3.4"; fi
-
-  # C++ REST SDK
-  # - sudo apt-get install libcpprest-dev
+services:
+  - docker
 
 script:
-  - $CXX --version
-  # Will work on getting makes working in Travis CI later...
-  # - mkdir build && cd build
-  # - cmake ..
-  # - make
+  - docker build -t wsf .
